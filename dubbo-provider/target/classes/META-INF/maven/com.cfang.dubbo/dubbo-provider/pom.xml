@@ -1,0 +1,70 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.cfang.dubbo</groupId>
+    <artifactId>parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>dubbo-provider</artifactId>
+  
+  <dependencies>
+  	<dependency>
+  		<groupId>com.cfang.dubbo</groupId>
+  		<artifactId>dubbo-interface</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  	<dependency>
+  		 <groupId>com.alibaba</groupId>
+		 <artifactId>dubbo</artifactId>
+  	</dependency>
+  	<dependency>
+	    <groupId>com.101tec</groupId>
+	    <artifactId>zkclient</artifactId>
+	</dependency>
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-context</artifactId>
+	</dependency>
+	<dependency>
+        <groupId>org.apache.zookeeper</groupId>
+        <artifactId>zookeeper</artifactId>
+    </dependency>
+	<dependency>
+	    <groupId>io.netty</groupId>
+	    <artifactId>netty-all</artifactId>
+	</dependency>
+	<dependency>
+        <groupId>org.apache.curator</groupId>
+        <artifactId>curator-framework</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.curator</groupId>
+        <artifactId>curator-recipes</artifactId>
+    </dependency>
+  </dependencies>
+  
+  <build>
+		<plugins>
+			<!-- 指定项目的打包插件信息, maven install 特性变更. 变化为-打包. -->
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<!-- 指定打包描述文件的位置：相对项目根目录的路径 -->
+					<!-- assembly打包的描述文件 -->
+					<descriptor>assembly/assembly.xml</descriptor>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<!-- 要执行的功能. 打包. -->
+						<phase>package</phase>
+						<goals>
+							<!-- 打包文件永远是唯一的.多次打包是覆盖操作. -->
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
